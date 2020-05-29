@@ -66,3 +66,30 @@ inquirer.prompt([
         name: "questions",
     },
 ])
+    .then((answers) => {
+        //user response
+        fs.writeFile("README.md", "generateMarkdown.js", function (err) {
+
+            if (err) {
+                return console.log(err);
+            }
+        });
+
+    })
+
+
+
+
+
+
+// const questions = [
+// ProjectTitle: Project Title,
+// Description: 
+// ];
+
+
+// function init() {
+
+// }
+
+// init();
