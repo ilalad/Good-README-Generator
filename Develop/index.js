@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
 const util = require("util");
-const generateMarkdown = require("./generateMarkdown.js");
+const generateMarkdown = require("./utils/generateMarkdown.js");
 
 //array of questions 
 inquirer.prompt([
@@ -39,36 +39,36 @@ inquirer.prompt([
     {
         type: "input",
         message: "What command should be run to install dependencies",
-        name: "installation",
+        name: "Installation",
     },
     {
         type: "input",
         message: "What does the user need to know about using the repo",
-        name: "usage",
+        name: "Usage",
     },
     {
         type: "list",
         message: "What kind of license should your project have (user arrow keys to select",
-        name: "license",
+        name: "License",
         choices: ["MIT", "APACHE", "GPL", "BSD", "None"],
     },
     {
         type: "input",
         message: "What does the user need to know about contributing to the repo",
-        name: "contributors",
+        name: "Contributing",
     }, {
         type: "input",
         message: "What command should be run to run tests",
-        name: "tests",
+        name: "Tests",
     }, {
         type: "input",
         message: "Questions",
-        name: "questions",
+        name: "Questions",
     },
 ])
     .then((answers) => {
         //user response
-        fs.writeFile("README.md", "generateMarkdown.js", function (err) {
+        fs.writeFile("README.md", generateMarkdown, function (err) {
 
             if (err) {
                 return console.log(err);
@@ -80,12 +80,6 @@ inquirer.prompt([
 
 
 
-
-
-// const questions = [
-// ProjectTitle: Project Title,
-// Description: 
-// ];
 
 
 // function init() {

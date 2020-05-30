@@ -1,6 +1,6 @@
-function generateMarkdown(data) {
+function generateMarkdown(answers) {
   return `
-# ${data.title}
+# ${answers.message}
 
 `;
 }

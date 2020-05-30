@@ -1,1 +1,6 @@
-hello world
+function generateMarkdown(answers) {
+  return `
+# ${answers.message}
+
+`;
+}
