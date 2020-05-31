@@ -7,37 +7,19 @@ const generateMarkdown = require("./utils/generateMarkdown.js");
 function promptUser() {
     return inquirer
         .prompt([
-            {
-                type: "input",
-                message: "What is your GitHub username",
-                name: "username"
-            },
-            {
-                type: "input",
-                message: "What is your GitHub email",
-                name: "email",
-            },
-            {
-                type: "input",
-                message: "The URL to your project",
-                name: "URL",
-            },
+
             {
                 type: "input",
                 message: "What is the project name",
-                name: "title",
+                name: "Title",
             },
 
             {
                 type: "input",
                 message: "Write a description of your project",
-                name: "description",
+                name: "Description",
             },
-            {
-                type: "input",
-                message: "Table of Contents",
-                name: "tableofcontents",
-            },
+
             {
                 type: "input",
                 message: "What command should be run to install dependencies",
@@ -57,7 +39,7 @@ function promptUser() {
             {
                 type: "input",
                 message: "What does the user need to know about contributing to the repo",
-                name: "Contributing",
+                name: "Contribution",
             }, {
                 type: "input",
                 message: "What command should be run to run tests",
@@ -67,8 +49,10 @@ function promptUser() {
                 message: "Questions",
                 name: "Questions",
             },
+
         ]);
 }
+
 promptUser()
     .then((answers) => {
         //user response
@@ -78,10 +62,6 @@ promptUser()
             console.log("Successfully generated README.md")
         });
     });
-
-
-
-
 
 
 
