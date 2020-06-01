@@ -1,7 +1,10 @@
 const inquirer = require("inquirer");
+const axios = require("axios");
+
 const fs = require("fs");
 const util = require("util");
 const generateMarkdown = require("./utils/generateMarkdown.js");
+
 
 //array of questions
 function promptUser() {
@@ -38,31 +41,42 @@ function promptUser() {
             },
             {
                 type: "input",
-                message: "What does the user need to know about contributing to the repo",
+                message: "What does the user need to know about contributing to the repo?",
                 name: "Contribution",
             }, {
                 type: "input",
-                message: "What command should be run to run tests",
+                message: "What command should be run to run tests?",
                 name: "Tests",
             }, {
                 type: "input",
                 message: "Questions",
                 name: "Questions",
             },
+            {
+                type: "input",
+                message: "What is your GitHub username?",
+                name: "username"
+            },
 
         ]);
 }
 
 promptUser()
-    .then((answers) => {
+    .then(function ({ answers }) {
+        const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+        axios.get(queryUrl).then(function (res) {
+            return answers;
+        });
+
         //user response
-        fs.writeFile("README.md", generateMarkdown, (err) => {
-            if (err) throw err;
-            console.log(err);
+        // fs.writeFile("README.md", generateMarkdown, (err) => {
+        fs.writeFile(README.md, answers, function (err) {
+            if (err) {
+                throw err;
+            }
             console.log("Successfully generated README.md")
         });
     });
-
 
 
 // function init() {
